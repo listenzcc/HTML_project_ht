@@ -101,17 +101,18 @@ def mk_article(length=0, newline='\n', author_name='anonymous'):
 
     article_list = []
     # Adding title
-    article_list.append('Title: %s' % mk_sentence(is_title=True))
-    for j in range(length):
-        article_list.append(mk_paragraph())
-
+    title = mk_sentence(is_title=True)
+    article_list.append('Title: %s' % title)
     # Adding author
     article_list.append('Author: %s' % author_name)
     # Adding date
     article_list.append('Date: %s' % time.ctime())
 
+    for j in range(length):
+        article_list.append(mk_paragraph())
+
     # Seperate paragraph using newling
-    return newline.join(article_list)
+    return newline.join(article_list), title
 
 
 print(mk_article())
