@@ -18,8 +18,11 @@ length_range_dict = dict(
     word=(2, 10),  # One word should contain 2-10 characters.
     sentence=(5, 10),  # One sentence should contain 5-10 words.
     paragraph=(10, 20),  # One paragraph should contain 10-20 sentences.
-    article=(7, 10)  # One article should contain 7-10 sentences.
+    article=(10, 15)  # One article should contain 10-15 paragraphs.
 )
+
+# Keyword List
+keyword_list = list('key%02d' % e for e in range(13))
 
 
 def build_char_dict(char_prob_dict=char_prob_dict):
@@ -80,6 +83,19 @@ def mk_sentence(length=0, is_title=False):
     return ' '.join(word_list)+'.'
 
 
+def mk_keywords(length=0, keyword_list=keyword_list, shuffle=True):
+    # Make fake keywords
+    if length < 1:
+        # length can not be too short
+        length = 5
+
+    if shuffle:
+        # shuffle the keywords in keyword_list
+        random.shuffle(keyword_list)
+
+    return ', '.join(keyword_list[j] for j in range(length))
+
+
 def mk_paragraph(length=0):
     # Make fake paragraph
     if length < 1:
@@ -107,6 +123,10 @@ def mk_article(length=0, newline='\n', author_name='anonymous'):
     article_list.append('Author: %s' % author_name)
     # Adding date
     article_list.append('Date: %s' % time.ctime())
+    # Adding abstract
+    article_list.append('Abstract: %s' % mk_paragraph())
+    # Adding keywords
+    article_list.append('Keywords: %s' % mk_keywords())
 
     for j in range(length):
         article_list.append(mk_paragraph())
@@ -115,4 +135,5 @@ def mk_article(length=0, newline='\n', author_name='anonymous'):
     return newline.join(article_list), title
 
 
-print(mk_article())
+article, title = mk_article()
+print(article)
