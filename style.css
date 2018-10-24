@@ -1,0 +1,30 @@
+#header {
+    background-color:black;
+    color:white;
+    text-align:center;
+    padding:10px;
+}
+#left_panel {
+    width:150px;
+    float:left;
+}
+#main_panel {
+    width:900px;
+    left:160px;
+    position:absolute;
+}
+#footer {
+    background-color:black;
+    color:white;
+    clear:both;
+    text-align:center;
+}
+#nav {
+    line-height:30px;
+    background-color:#eeeeee;
+    padding:10px;
+}
+#context {
+    width:100%;
+}
+
