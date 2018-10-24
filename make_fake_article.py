@@ -121,8 +121,9 @@ def mk_article(length=0, newline='\n', author_name='anonymous'):
     article_list.append('Title: %s' % title)
     # Adding author
     article_list.append('Author: %s' % author_name)
-    # Adding date
-    article_list.append('Date: %s' % time.ctime())
+    # Adding date, random date in the last year
+    article_list.append('Date: %s' % time.ctime(
+        time.time()-random.random()*365*24*60*60))
     # Adding abstract
     article_list.append('Abstract: %s' % mk_paragraph())
     # Adding keywords
