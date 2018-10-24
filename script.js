@@ -19,10 +19,10 @@ function reset()
         var outHeight = frame.offsetHeight;
         var inHeight = frame.contentWindow.document.body.scrollHeight;
         if (outHeight < inHeight)
-	{
-	    frame.style.height = (inHeight + 10) + "px";
+		{
+			frame.style.height = (inHeight+10) + "px";
         }
-        total_height += (inHeight+10);
+        total_height += (inHeight+15);
     }
     var left_panel = document.getElementById("left_panel");
     left_panel.style.height = total_height + "px";

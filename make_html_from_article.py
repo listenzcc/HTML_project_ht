@@ -3,6 +3,7 @@
 import os
 import random
 import time
+from make_main_html import write_html_main_layout
 
 article_dir = 'articles'
 html_dir = 'htmls'
@@ -49,7 +50,7 @@ def article_to_html(article, article_name):
     # Write html from article dict
     with open(article_name+'_title.html', 'w') as fid:
         # Title
-        write_as(fid, article['Title'], 'h1', 'text-align:justify')
+        write_as(fid, article['Title'], 'h1', 'text-align:center')
 
         # Picture
         fid.write('<div style=\"text-align: center\">')
@@ -96,5 +97,7 @@ for e in article_list:
 
 # Writing html in simple name
 for j in range(article_num):
-    article_to_html(article_list[0], os.path.join(
+    article_to_html(article_list[j], os.path.join(
         html_dir, 'article_%05d' % j))
+
+write_html_main_layout(article_list)
