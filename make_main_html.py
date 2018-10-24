@@ -26,16 +26,16 @@ def write_html_main_layout(article_list,
             if e.find('!--left_panel_nav_tobefilled--') != -1:
                 # Add nav things
                 for j in range(len(article_list)):
-                    fid.writelines('<a href="#article_%05d">' % j)
+                    fid.writelines('<a href="#article_%05d">\n' % j)
                     fid.writelines('%s<br>\n' %
                                    parse_date(article_list[j]['Date']))
-                    fid.writelines('</a>')
+                    fid.writelines('</a>\n')
                 continue
             if e.find('!--main_panel_context_tobefilled--') != -1:
                 # Add context things
                 for j in range(len(article_list)):
                     fid.writelines(
-                        '<iframe src="htmls/article_%05d_title.html", width="100%%" id="article_%05d" name="iframe" frameborder="0" scrolling="yes" onreadystatechange="resize()" onload="resize()"></iframe>' % (j, j))
+                        '<iframe src="htmls/article_%05d_title.html", width="100%%" id="article_%05d" name="iframe" frameborder="0" scrolling="yes" onreadystatechange="resize()" onload="resize()"></iframe>\n' % (j, j))
                 continue
 
             fid.writelines(e)

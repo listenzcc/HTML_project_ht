@@ -27,3 +27,10 @@ function reset()
     var left_panel = document.getElementById("left_panel");
     left_panel.style.height = total_height + "px";
 }
+
+window.onscroll = function()
+{
+    var oDiv=document.getElementById("nav");
+	var s = document.body.scrollTop||document.documentElement.scrollTop;
+	oDiv.style.top=(s+200)+"px";
+}
