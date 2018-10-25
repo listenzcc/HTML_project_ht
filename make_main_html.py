@@ -35,6 +35,8 @@ def write_html_main_layout(article_list,
                 # Add context things
                 for j in range(len(article_list)):
                     fid.writelines(
+                        '<div class="iframe_header" id="ifh_article_%05d" onclick="foo1(this)"> Read more of this </div>\n' % j)
+                    fid.writelines(
                         '<iframe src="htmls/article_%05d_title.html", width="100%%" id="article_%05d" name="iframe" frameborder="0" scrolling="yes" onreadystatechange="resize()" onload="resize()"></iframe>\n' % (j, j))
                 continue
 

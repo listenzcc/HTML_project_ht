@@ -1,31 +1,43 @@
-#header {
-    background-color:black;
-    color:white;
-    text-align:center;
-    padding:10px;
-}
 #left_panel {
     width:180px;
 	float:left;
 }
-#main_panel {
-    width:900px;
-    left:200px;
-    position:absolute;
-}
-#footer {
-    background-color:black;
-    color:white;
-    clear:both;
-    text-align:center;
-}
+
 #nav {
 	position:absolute;
     line-height:30px;
     background-color:#eeeeee;
     padding:10px;
 }
+
+#main_panel {
+    width:900px;
+    left:200px;
+    position:absolute;
+}
+
+#header {
+	background-color:black;
+	background-size:100% 350px;
+	height:350px;
+    text-align:right;
+    padding:0px;
+	margin-bottom:20px;
+}
+
 #context {
     width:100%;
+}
+
+.iframe_header {
+	color:gray;
+	text-align:right;
+}
+
+#footer {
+    background-color:black;
+    color:white;
+    clear:both;
+    text-align:center;
 }
 

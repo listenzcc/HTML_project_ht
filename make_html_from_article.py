@@ -46,6 +46,14 @@ def write_as(fid, string, label, style=''):
               (label, style, string, label))
 
 
+def copy_atob(a, b):
+    while True:
+        tmp = a.readline()
+        if tmp == '':
+            break
+        b.write(tmp)
+
+
 def article_to_html(article, article_name):
     # Write html from article dict
     with open(article_name+'_title.html', 'w') as fid:
@@ -73,6 +81,9 @@ def article_to_html(article, article_name):
             write_as(fid, e, 'span', 'font-style:oblique')
 
     with open(article_name+'_context.html', 'w') as fid:
+        with open(article_name+'_title.html', 'r') as rfid:
+            copy_atob(rfid, fid)
+
         for e in article['Context']:
             write_as(fid, e, 'p')
         write_as(fid, 'Article ends', 'p', 'color:gray; font-style:oblique')
