@@ -35,9 +35,11 @@ def write_html_main_layout(article_list,
                 # Add context things
                 for j in range(len(article_list)):
                     fid.writelines(
-                        '<div class="iframe_header" id="ifh_article_%05d" onclick="foo1(this)"> Read more of this </div>\n' % j)
+                        '<div class="iframe_header" id="ifh_article_%05d" onclick="article_wrapper(this)" style="background-color: lightsteelblue; background: linear-gradient(to right, lightsteelblue, white)"> Read more of this </div>\n' % j)
                     fid.writelines(
                         '<iframe src="htmls/article_%05d_title.html", width="100%%" id="article_%05d" name="iframe" frameborder="0" scrolling="yes" onreadystatechange="resize()" onload="resize()"></iframe>\n' % (j, j))
+                    fid.writelines(
+                        '<hr style="height:1px;border:none;border-top:1px solid #555555;" />\n')
                 continue
 
             fid.writelines(e)

@@ -2,18 +2,18 @@
 var oTime = null;
 function resize()
 {
-    if (oTime)
-    {
-        clearTimeout(oTime);
-    }
-    oTime = setTimeout(reset, 200);
+	reset();
+    //if (oTime)
+    //{
+    //    clearTimeout(oTime);
+    //}
+    //oTime = setTimeout(reset, 20);
 }
 //iframe自适应高度的函数
 function reset()
 {
 	console.log('resetting');
     var frames = document.getElementsByName("iframe");
-    var total_height = 350;
     for(var j=0;j<frames.length;j++)
     {
         frame = frames[j]
@@ -24,10 +24,9 @@ function reset()
 		{
 			frame.style.height = (inHeight+10) + "px";
         }
-        total_height += (inHeight+18);
     }
     var left_panel = document.getElementById("left_panel");
-    left_panel.style.height = total_height + "px";
+    left_panel.style.height = (frame.offsetTop+frame.offsetHeight+20) + "px";
 }
 //Keep nav on screen
 window.onscroll = function()
@@ -43,13 +42,14 @@ window.onload = function()
 	oDiv.style.top=(s+800)+"px";
 }
 //onClick of readmore
-function foo1(obj){
+function article_wrapper(obj){
 	var article = obj.id.slice(4);
 	console.log(article);
 	var frame = document.getElementById(article);
 	console.log(frame.src);
 	if (obj.textContent.indexOf("more") > 0)
 	{
+		frame.style.height = 0;
 		frame.src = "htmls/"+article+"_context.html";
 		obj.textContent = "Less of this";
 	}else{

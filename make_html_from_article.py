@@ -58,7 +58,8 @@ def article_to_html(article, article_name):
     # Write html from article dict
     with open(article_name+'_title.html', 'w') as fid:
         # Title
-        write_as(fid, article['Title'], 'h1', 'text-align:center')
+        fid.write('<h1 id="%s" style="text-align:center">%s</h1>' %
+                  ('title', article['Title']))
 
         # Picture
         fid.write('<div style=\"text-align: center\">')
@@ -86,7 +87,9 @@ def article_to_html(article, article_name):
 
         for e in article['Context']:
             write_as(fid, e, 'p')
+        fid.writelines('<a href="#title">\n')
         write_as(fid, 'Article ends', 'p', 'color:gray; font-style:oblique')
+        fid.writelines('</a>\n')
 
 
 article_num = len(article_name_list)
