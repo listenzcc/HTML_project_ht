@@ -26,7 +26,7 @@ def write_html_main_layout(article_list,
             if e.find('!--left_panel_nav_tobefilled--') != -1:
                 # Add nav things
                 for j in range(len(article_list)):
-                    fid.writelines('<a href="#article_%05d">\n' % j)
+                    fid.writelines('<a href="#ifh_article_%05d">\n' % j)
                     fid.writelines('%s<br>\n' %
                                    parse_date(article_list[j]['Date']))
                     fid.writelines('</a>\n')
@@ -38,8 +38,14 @@ def write_html_main_layout(article_list,
                         '<div class="iframe_header" id="ifh_article_%05d" onclick="article_wrapper(this)" style="background-color: lightsteelblue; background: linear-gradient(to right, lightsteelblue, white)"> Read more of this </div>\n' % j)
                     fid.writelines(
                         '<iframe src="htmls/article_%05d_title.html", width="100%%" id="article_%05d" name="iframe" frameborder="0" scrolling="yes" onreadystatechange="resize()" onload="resize()"></iframe>\n' % (j, j))
+                    fid.writelines('<a href="#ifh_article_%05d">\n' % j)
+                    fid.writelines('<div>')
                     fid.writelines(
                         '<hr style="height:1px;border:none;border-top:1px solid #555555;" />\n')
+                    fid.writelines(
+                        '<p style="position:relative;left:70%;top:-40px; color:gray;">Click here back to title</p>\n')
+                    fid.writelines('</div>')
+                    fid.writelines('</a>\n')
                 continue
 
             fid.writelines(e)
